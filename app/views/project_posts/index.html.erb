@@ -1,0 +1,39 @@
+<div class="log">
+  <p id="log"> Open Projects Artists! </p>
+
+    <div class="new">
+  <%= link_to 'Share another here', new_project_post_path, class: "btn-large-custom-3" %> 
+      </div>
+  </div>
+</br>
+
+
+   <% @project_posts.each do |project_post| %>
+   
+  <div class= "col-lg-4">
+     <div class="well">
+
+        <span id="title"><%= link_to project_post.title.upcase, project_post %></span>
+        <br>
+
+          <p>Date:  <%= project_post.date %></p>
+          <p>Location: <%= project_post.location %></p>
+          <p>Looking for:   <%= project_post.need %></p>
+          <p>Description:   <%= project_post.description[0..150] %>...<%=link_to "[and...]", project_post%>%></p>
+
+          <p>Posted By:  <%= link_to project_post.user.name,user_profile_path(id: project_post.user_id) %></p>
+
+            <% if user_signed_in? %>
+          <%= link_to 'Edit', project_post_path(project_post), class: "btn-large-custom" %>
+           <%= link_to 'Delete', project_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-large-custom-2"%>
+            <% end %>
+            
+           </div>
+      </div>  
+    <% end %>
+
+
+
+
+  
+

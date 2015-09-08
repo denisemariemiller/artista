@@ -1,0 +1,27 @@
+<h1> All of <%= current_user.username %> 's Posts<h/1>
+
+  <div class="row">
+    <% current_user.blog_posts.each do |blog_post| %>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="pane panel-heading">
+            <%= link_to blog_post.title, blog_post %>
+         </div>
+         <!-- closing pant-heading div -->
+         <div class="panel-body">
+        <p><%= blog_post.blog_entry[0..200] %>...<%= link_to "[READ MORE]", blog_post %></p>
+      </div> 
+      <!-- closing pan-body div -->
+
+      <div class="panel-footer">
+        <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-success"%>
+        <%= link_to 'Destroy', blog_post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %>
+      </div>
+      <!-- closing panel-footer div -->
+      </div>
+      <!-- closing panel div -->
+    </div>
+    <!-- closing column div -->
+  <% end %>
+</div>
+<!-- closing row div -->

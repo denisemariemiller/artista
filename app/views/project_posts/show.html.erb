@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+
+<br>
+<br>
+
+<div class= "well">
+   
+ <br>
+  <p> <strong>Title:  </strong><%= @project_post.title.upcase %></p>
+  <br>
+      <p>Date:  <%= @project_post.date %></p>
+      <p>Location:  <%= @project_post.location %></p>
+      <p><strong>Need:  </strong><%= @project_post.need %></p>
+      <p>Description: <%= @project_post.description %></p>
+
+     <p>Post By:  <%= link_to @project_post.user.name.upcase,user_profile_path(id: @project_post.user_id) %></p>
+
+
+    <%= link_to project_posts_path do %><span class="glyphicon glyphicon-arrow-left"></span>
+       <% end %>
+
+ <% if user_signed_in? %>
+    <%= link_to edit_project_post_path(@project_post) do %><span class="glyphicon glyphicon-pencil"></span>
+      <% end %> 
+    <% end %>
+
+
+</div>

@@ -1,0 +1,42 @@
+
+<div class="well">
+	<p id="log"><%= @user.name.upcase %>'s Profile</p>
+	<p id="avatar"><%= image_tag @user.avatar.url(:thumb) %></p>
+		<p id="bio"><%= @user.bio %></p>
+		
+</div>
+<div class="well">
+  		<p>EVENTS, I've shared:</p>
+ </div>
+<% @user.blog_posts.each do |b| %>
+	<div class="well well-sm">	
+		<p><%= b.title %></p>
+		<p> date:  <%= b.date %></p>
+		<p>Location:  <%= b.location %></p>
+		<p>Art category:  <%= b.art_category %></p>
+		<p>Desciption:  <%= b.description %></p>
+	</div>
+<% end %>
+
+<br>
+
+		<div class="well">
+		  		<p>I need ARTISTS for these projects:</p>
+		  	</div>
+
+<br>
+
+<p>
+	<% @user.project_posts.each do |p| %>
+		<div class="well_well-sm">	
+		<p>	<%= p.title %></p>
+		<p> date:  <%= p.date %></p>
+      	<p>Location:  <%= p.location %></p>
+      	<p> Looking for: <% p.need %></p>
+      	<p>Desciption:  <%= p.description %></p>
+	<% end %>
+</p>
+
+		</div>	
+	</div>	
+

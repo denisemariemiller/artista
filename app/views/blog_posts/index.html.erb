@@ -1,0 +1,35 @@
+<div class="log">
+  <p id="log"> See You At These! </p>
+    <div class="new">
+  <%= link_to 'Share another here', new_blog_post_path, class: "btn-large-custom-3" %> 
+      </div>
+  </div>
+          </br>
+     
+  <% @blog_posts.each do |blog_post| %>
+ 
+  <div class= "col-sm-6">
+     <div class="well">
+        
+        <p><span id="title"> <%= link_to blog_post.title.upcase, blog_post %></span></p>
+      <br>
+          <p> Date:  <%= blog_post.date %></p>
+          <p> Location: <%= blog_post.location %></p>
+          <p> Art Category: <%= blog_post.art_category %></p>
+          <p> The details:  <%= blog_post.description[0..150] %>...<%=link_to "[and...]", blog_post%></p>
+
+          <p>Post By:  <%= link_to blog_post.user.name,user_profile_path(id: blog_post.user_id) %></p>
+     
+
+       
+          <%= link_to '  Edit  ', edit_blog_post_path(blog_post), class: "btn-large-custom" %>
+           <%= link_to 'Delete', blog_post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-large-custom-2"%>
+           
+      </div>
+    </div>
+
+      <% end %>
+   
+  
+
+<br>

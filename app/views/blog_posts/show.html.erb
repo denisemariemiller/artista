@@ -1,0 +1,20 @@
+  <p id="notice"><%= notice %></p>
+
+<div class="well">
+
+
+      <p><strong>Title:   </strong><%= @blog_post.title %></p>
+        
+        <br>
+      <p>Date:    <%= @blog_post.date %></p>
+      <p>Location:   <%= @blog_post.location %></p>
+      <p>Art category:   <%= @blog_post.art_category %></p>
+      <p>Desciption:    <%= @blog_post.description %></p>
+      <p>Post By:  <%= link_to @blog_post.user.name.upcase,user_profile_path(id: @blog_post.user_id) %></p>
+
+     
+  
+
+      <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+      <%= link_to 'Back', blog_posts_path %>
+    </div>

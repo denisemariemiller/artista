@@ -1,0 +1,38 @@
+<div class="well">
+<%= form_for(@project_post) do |f| %>
+  <% if @project_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project_post.errors.count, "error") %> prohibited this project_post from being saved:</h2>
+
+      <ul>
+      <% @project_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.text_field :title, class: "form-control", placeholder: "Project Title"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :location, class: "form-control", placeholder: "location(s)" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :need, class: "form-control", placeholder: "skill-type needed" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, class: "form-control", placeholder: "Describe needs and project" %>
+  </div>
+    <div class="form-group">
+    <%= f.hidden_field :user_id, value: current_user.id%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
